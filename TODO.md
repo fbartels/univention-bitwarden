@@ -1,0 +1,1 @@
+- can bitwarden run from a subdir?

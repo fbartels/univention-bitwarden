@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -x
+
+VERSION=1
+SERVICE="bitwarden_rs"
+
+. /usr/share/univention-join/joinscripthelper.lib
+. /usr/share/univention-appcenter/joinscripthelper.sh
+. /usr/share/univention-lib/base.sh
+
+joinscript_init
+eval "$(ucr shell)"
+
+ucs_addServiceToLocalhost "${SERVICE}" "$@"
+
+joinscript_save_current_version
+exit 0

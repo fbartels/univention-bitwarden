@@ -1,0 +1,3 @@
+appcenter/*
+!appcenter/*.md
+README.html
