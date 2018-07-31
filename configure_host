@@ -129,7 +129,7 @@ a2ensite bitwarden_rs
 invoke-rc.d apache2 reload
 
 # update links to bitwarden_rs for portal
-PORTAL="ucs/web/overview/entries/admin/bitwarden_rs"
+PORTAL="ucs/web/overview/entries/service/bitwarden_rs"
 ucr set \
   ${PORTAL}/description="Bitwarden login" \
   ${PORTAL}/description/de="Login für Bitwarden" \

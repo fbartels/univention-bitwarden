@@ -1,0 +1,59 @@
+[DOMAIN]
+Description = Hostname of Bitwarden_rs required for U2F auth (https://github.com/dani-garcia/bitwarden_rs#enabling-u2f-authentication). Needs a restart of the App for changes to take effect.
+Type = String
+Show = Install, Settings
+Scope = inside
+Required = true
+InitialValue = @%@hostname@%@.@%@domainname@%@
+
+[SIGNUPS_ALLOWED]
+Description = Set to false to disable creating of new accounts.
+Type = Bool
+Show = Install, Settings
+Scope = inside
+Required = true
+InitialValue = true
+
+[bitwarden_rs/hostname]
+Description = Hostname to use for bitwarden_rs; will by default use the hostname of the UCS host (with port 8345 for http and port 8456 for SSL). When a custom hostname is specified bitwarden_rs will use the default webserver ports (80 and 443)
+Type = String
+Show = Install, Settings
+Required = False
+Scope = outside
+Group = Hostname and SSL
+
+[bitwarden_rs/sslcertificate]
+Description = SSL Certificate to use for bitwarden_rs; will by default use the certificate specified in UCR apache2/ssl/certificate and fall back to the default certificate of the UCS host. When using a seperate certificate, copy the file to the UCS System and provide the absolute path here
+Type = String
+Show = Install, Settings
+Required = False
+Scope = outside
+Group = Hostname and SSL
+InitialValue = @%@apache2/ssl/certificate@%@
+
+[bitwarden_rs/sslkey]
+Description = SSL private key to use for bitwarden_rs; will by default use the private key specified in UCR apache2/ssl/key and fall back to the default private key of the UCS host. When using a seperate private key, copy the file to the UCS System and provide the absolute path here
+Type = String
+Show = Install, Settings
+Required = False
+Scope = outside
+Group = Hostname and SSL
+InitialValue = @%@apache2/ssl/key@%@
+
+[bitwarden_rs/sslca]
+Description = CA to use for bitwarden_rs; will by default use the CA specified in UCR apache2/ssl/ca and fall back to the default ca of the UCS host. When using a seperate CA, copy the file to the UCS System and provide the absolute path here
+Type = String
+Show = Install, Settings
+Required = False
+Scope = outside
+Group = Hostname and SSL
+InitialValue = @%@apache2/ssl/ca@%@
+
+[bitwarden_rs/sslchain]
+Description = Certificate chain to use for bitwarden_rs; if a chain is specified in UCR apache2/ssl/certificatechain this will be used. When using a seperate chain, copy the file to the UCS System and provide the absolute path here
+Type = String
+Show = Install, Settings
+Required = False
+Scope = outside
+Group = Hostname and SSL
+InitialValue = @%@apache2/ssl/certificatechain@%@
