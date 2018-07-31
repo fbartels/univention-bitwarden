@@ -5,7 +5,7 @@ eval "$(ucr shell)"
 CONFIG="$(univention-app shell bitwarden-rs cat /etc/univention/base.conf)"
 DATADIR="/var/lib/bitwarden_rs"
 
-CONFIG_HOSTNAME="$(echo "$CONFIG" | sed -n 's/^bitwarden_rs\/hostname: \(.*\)/\1/p')"
+CONFIG_HOSTNAME="$(echo "$CONFIG" | sed -n 's/^bitwarden-rs\/hostname: \(.*\)/\1/p')"
 if [ -z ${CONFIG_HOSTNAME} ]; then
 	# use default hostname if CONFIG_HOSTNAME is not set
 	echo "setting default hostname"
@@ -24,7 +24,7 @@ else
 	VirtualHostSSL="*:443"
 fi
 
-CONFIG_SSLCERTIFICATE="$(echo "$CONFIG" | sed -n 's/^bitwarden_rs\/sslcertificate: \(.*\)/\1/p')"
+CONFIG_SSLCERTIFICATE="$(echo "$CONFIG" | sed -n 's/^bitwarden-rs\/sslcertificate: \(.*\)/\1/p')"
 if [ ! -z ${CONFIG_SSLCERTIFICATE} ] && [ -f ${CONFIG_SSLCERTIFICATE} ]; then
 	echo "using custom certificate"
 	SSLCERTIFICATE="$CONFIG_SSLCERTIFICATE"
@@ -36,7 +36,7 @@ else
 	SSLCERTIFICATE="/etc/univention/ssl/${hostname}.${domainname}/cert.pem"
 fi
 
-CONFIG_SSLKEY="$(echo "$CONFIG" | sed -n 's/^bitwarden_rs\/sslkey: \(.*\)/\1/p')"
+CONFIG_SSLKEY="$(echo "$CONFIG" | sed -n 's/^bitwarden-rs\/sslkey: \(.*\)/\1/p')"
 if [ ! -z ${CONFIG_SSLKEY} ] && [ -f ${CONFIG_SSLKEY} ]; then
 	echo "using custom private key"
 	SSLKEY="$CONFIG_SSLKEY"
@@ -48,7 +48,7 @@ else
 	SSLKEY="/etc/univention/ssl/${hostname}.${domainname}/private.key"
 fi
 
-CONFIG_SSLCA="$(echo "$CONFIG" | sed -n 's/^bitwarden_rs\/sslca: \(.*\)/\1/p')"
+CONFIG_SSLCA="$(echo "$CONFIG" | sed -n 's/^bitwarden-rs\/sslca: \(.*\)/\1/p')"
 if [ ! -z ${CONFIG_SSLCA} ] && [ -f ${CONFIG_SSLCA} ]; then
 	echo "using custom ca"
 	SSLCA="$CONFIG_SSLCA"
@@ -60,7 +60,7 @@ else
 	SSLCA="/etc/univention/ssl/ucsCA/CAcert.pem"
 fi
 
-CONFIG_SSLCHAIN="$(echo "$CONFIG" | sed -n 's/^bitwarden_rs\/sslchain: \(.*\)/\1/p')"
+CONFIG_SSLCHAIN="$(echo "$CONFIG" | sed -n 's/^bitwarden-rs\/sslchain: \(.*\)/\1/p')"
 if [ ! -z ${CONFIG_SSLCHAIN} ] && [ -f ${CONFIG_SSLHAIN} ]; then
 	echo "using custom chain"
 	SSLCHAIN="SSLCertificateChainFile $CONFIG_SSLCHAIN"
@@ -127,12 +127,3 @@ EOF
 
 a2ensite bitwarden_rs
 invoke-rc.d apache2 reload
-
-# update links to bitwarden_rs for portal
-PORTAL="ucs/web/overview/entries/service/bitwarden_rs"
-ucr set \
-  ${PORTAL}/description="Bitwarden login" \
-  ${PORTAL}/description/de="Login für Bitwarden" \
-  ${PORTAL}/label?"Bitwarden" \
-  ${PORTAL}/label/de?"Bitwarden" \
-  ${PORTAL}/link="$HOST"
