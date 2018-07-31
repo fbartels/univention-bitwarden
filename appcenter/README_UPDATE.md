@@ -1,5 +1,5 @@
-## Univention Matterbridge app
+## Univention Bitwarden_rs app
 
-### 0.10.0
+### 0.11.0
 
-- implements [bitwarden_rs 0.10.0](https://github.com/dani-garcia/bitwarden_rs/releases/tag/0.10.0)
+- implements [bitwarden_rs 0.11.0](https://github.com/dani-garcia/bitwarden_rs/releases/tag/0.11.0)

@@ -39,7 +39,7 @@ clean:
 
 appcenter-files: generate-docs
 	univention-appcenter-control upload --noninteractive $(ucs_version)/$(app_name)=$(app_version) \
-	inst preinst uinst \
+	configure_host inst preinst uinst \
 	appcenter/README_EN appcenter/README_DE appcenter/README_UPDATE
 
 appcenter-docker-version:

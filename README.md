@@ -1,4 +1,4 @@
-# Univention Matterbridge app
+# Univention Bitwarden_rs app
 
 Will be worked on every once in a while. Contributions welcome!
 

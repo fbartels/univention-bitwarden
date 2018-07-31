@@ -14,5 +14,14 @@ eval "$(ucr shell)"
 
 ucs_addServiceToLocalhost "${SERVICE}" "$@"
 
+# add custom ports to firewall
+ucr set \
+	security/packetfilter/package/bitwarden_rs/tcp/8567/all="ACCEPT" \
+	security/packetfilter/package/bitwarden_rs/tcp/8567/all/en="bitwarden_rs http" \
+	security/packetfilter/package/bitwarden_rs/tcp/8678/all="ACCEPT" \
+	security/packetfilter/package/bitwarden_rs/tcp/8678/all/en="bitwarden_rs https" \
+[ -x "/etc/init.d/univention-firewall" ] && invoke-rc.d univention-firewall restart
+
+
 joinscript_save_current_version
 exit 0

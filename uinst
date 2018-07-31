@@ -8,7 +8,7 @@ joinscript_init
 
 eval "$(ucr shell)"
 SERVICE="bitwarden_rs"
-APP="bitwarden_rs"
+APP="bitwarden-rs"
 
 ucs_removeServiceFromLocalhost "${SERVICE}" "$@"
 
