@@ -2,8 +2,8 @@
 
 Will be worked on every once in a while. Contributions welcome!
 
-Probably opiniated recipe for running dockerised applications on Univention Corporate Server (UCS). The provided app is a Bitwarden server API implementation compatible with [upstream Bitwarden clients](https://bitwarden.com/#download)*, ideal for self-hosted deployment where running official resource-heavy service might not be ideal.
+(Probably) opiniated recipe for running dockerised applications on Univention Corporate Server (UCS). The provided app is a Bitwarden server API implementation compatible with [upstream Bitwarden clients](https://bitwarden.com/#download)*, ideal for self-hosted deployment where running official resource-heavy service might not be ideal.
 
-The upstream source of the app is a [Rust implementation of the Bitwarden API](https://github.com/dani-garcia/bitwarden_rs). The script in this repo uses the projects official Docker image and always gets the latest Tag from the Docker Hub.
+The upstream source of the app is a [Rust implementation of the Bitwarden API](https://github.com/dani-garcia/bitwarden_rs). The script in this repo uses the projects official Docker image and always gets the latest tagged version from the Docker Hub.
 
 _*Note, that this project is not associated with the [Bitwarden](https://bitwarden.com/) project nor 8bit Solutions LLC._
