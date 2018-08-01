@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -e
 
 # get latest tagged image
 VERSION=$(git ls-remote --refs --tags https://github.com/dani-garcia/bitwarden_rs.git | sort -t '/' -k 3 -V | awk -F/ '{ print $3 }' | tail -1)
@@ -27,5 +27,5 @@ docker rm -f $APP
 docker run -d --name=$APP --restart=unless-stopped \
 	-v /var/lib/bitwarden_rs/:/data/ \
 	--env-file ./env \
-	-p 9080:80 \
+	-p 127.0.0.1:9080:80 \
 	$docker_name

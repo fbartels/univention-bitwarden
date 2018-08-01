@@ -1,9 +1,9 @@
-# Univention Bitwarden_rs app
+# A template for running bitwarden_rs on Univention (4.2 and up)
 
 Will be worked on every once in a while. Contributions welcome!
 
-This is Bitwarden server API implementation written in rust compatible with [upstream Bitwarden clients](https://bitwarden.com/#download)*, ideal for self-hosted deployment where running official resource-heavy service might not be ideal.
+Probably opiniated recipe for running dockerised applications on Univention Corporate Server (UCS). The provided app is a Bitwarden server API implementation compatible with [upstream Bitwarden clients](https://bitwarden.com/#download)*, ideal for self-hosted deployment where running official resource-heavy service might not be ideal.
 
-App is based on [Rust implementation of Bitwarden API](https://github.com/dani-garcia/bitwarden_rs).
+The upstream source of the app is a [Rust implementation of the Bitwarden API](https://github.com/dani-garcia/bitwarden_rs). The script in this repo uses the projects official Docker image and always gets the latest Tag from the Docker Hub.
 
 _*Note, that this project is not associated with the [Bitwarden](https://bitwarden.com/) project nor 8bit Solutions LLC._
