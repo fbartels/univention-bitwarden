@@ -1,1 +1,0 @@
-- [*] can bitwarden run from a subdir? no it apparently cannot https://github.com/bitwarden/core/issues/277
