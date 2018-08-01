@@ -1,3 +1,4 @@
 appcenter/*
 !appcenter/*.md
 README.html
+env
