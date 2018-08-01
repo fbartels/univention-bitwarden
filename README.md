@@ -8,6 +8,10 @@ The upstream source of the app is a [Rust implementation of the Bitwarden API](h
 
 _*Note, that this project is not associated with the [Bitwarden](https://bitwarden.com/) project nor 8bit Solutions LLC._
 
+## Updating
+
+To update bitwarden_rs to the latest version simply rerun the script.
+
 ## Getting logs
 
 The app does not write a logfile of its own, instead the `docker logs` command should be used, e.g. like the following `docker logs -f bitwarden-rs`.
