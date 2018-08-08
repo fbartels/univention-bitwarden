@@ -26,6 +26,7 @@ docker pull $docker_name
 docker rm -f $APP
 docker run -d --name=$APP --restart=unless-stopped \
 	-v $data_dir:/data/ \
+	-v /etc/localtime:/etc/localtime:ro \
 	--env-file ./env \
 	-p 127.0.0.1:9080:80 \
 	$docker_name
@@ -116,10 +117,14 @@ EOF
 a2ensite bitwarden_rs || true
 invoke-rc.d apache2 reload
 
+wget -O /usr/share/univention-web/js/dijit/themes/umc/icons/50x50/bitwarden.png \
+	https://raw.githubusercontent.com/bitwarden/brand/master/icons/128x128.png
+
 # create a link in the Univention portal
 P="ucs/web/overview/entries/service"
 ucr set \
 	"$P/$APP"/description="Open source password management solutions for individuals, teams, and business organizations." \
+	"$P/$APP"/icon="/univention-management-console/js/dijit/themes/umc/icons/50x50/bitwarden.png" \
 	"$P/$APP"/label="Bitwarden" \
 	"$P/$APP"/link="https://bitwarden.$hostname.$domainname/"
 
