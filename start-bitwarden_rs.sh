@@ -15,7 +15,7 @@ eval "$(ucr shell hostname domainname)"
 
 if [ ! -e ./env ]; then
 	cat <<-EOF >"./env"
-DOMAIN=https://bitwarden.$hostname.$domainname/
+DOMAIN=https://bitwarden.$hostname.$domainname
 SIGNUPS_ALLOWED=true
 EOF
 fi
