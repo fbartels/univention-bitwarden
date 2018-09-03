@@ -9,7 +9,7 @@ APP="bitwarden-rs"
 # get latest tagged image
 VERSION=$(git ls-remote --refs --tags https://github.com/dani-garcia/bitwarden_rs.git | sort -t '/' -k 3 -V | awk -F/ '{ print $3 }' | tail -1)
 docker_name="mprasil/bitwarden:$VERSION"
-#docker_name="mprasil/bitwarden:beta"
+#docker_name="mprasil/bitwarden:beta-ws"
 data_dir="/var/lib/bitwarden_rs"
 
 eval "$(ucr shell hostname domainname)"
@@ -30,6 +30,7 @@ docker run -d --name=$APP --restart=unless-stopped \
 	-v /etc/localtime:/etc/localtime:ro \
 	--env-file ./env \
 	-p 127.0.0.1:9080:80 \
+	-p 127.0.0.1:3012:3012 \
 	$docker_name
 
 if [ ! -z $(ucr get apache2/ssl/certificate) ]; then
@@ -94,11 +95,12 @@ cat <<-EOF >"/etc/apache2/sites-available/bitwarden_rs.conf"
         ErrorLog \${APACHE_LOG_DIR}/bitwarden_rs-error.log
         CustomLog \${APACHE_LOG_DIR}/bitwarden_rs-access.log combined
 
-        <Location />
-                Require all granted
-                ProxyPass http://127.0.0.1:9080/
-                ProxyPassReverse http://127.0.0.1:9080/
-        </Location>
+        RewriteEngine On
+        RewriteCond %{HTTP:Upgrade} =websocket [NC]
+        RewriteRule /(.*)           ws://127.0.0.1:3012/$1 [P,L]
+
+        ProxyPass / http://127.0.0.1:9080/
+        ProxyPassReverse / http://127.0.0.1:9080/
 
         ProxyPreserveHost On
         ProxyRequests Off
