@@ -120,8 +120,10 @@ EOF
 a2ensite bitwarden_rs || true
 invoke-rc.d apache2 reload
 
-wget -O /usr/share/univention-web/js/dijit/themes/umc/icons/50x50/bitwarden.png \
-	https://raw.githubusercontent.com/bitwarden/brand/master/icons/128x128.png
+if [ ! -e /usr/share/univention-web/js/dijit/themes/umc/icons/50x50/bitwarden.png ]; then
+	wget -O /usr/share/univention-web/js/dijit/themes/umc/icons/50x50/bitwarden.png \
+		https://raw.githubusercontent.com/bitwarden/brand/master/icons/128x128.png
+fi
 
 # create a link in the Univention portal
 P="ucs/web/overview/entries/service"
