@@ -70,7 +70,6 @@ cat <<-EOF >"/etc/apache2/sites-available/bitwarden_rs.conf"
 
 <VirtualHost *:80>
         ServerName	bitwarden.$hostname.$domainname
-        ServerAdmin	webmaster@example.org
 
         ErrorLog \${APACHE_LOG_DIR}/bitwarden-error.log
         CustomLog \${APACHE_LOG_DIR}/bitwarden-access.log combined
@@ -85,7 +84,6 @@ cat <<-EOF >"/etc/apache2/sites-available/bitwarden_rs.conf"
 <VirtualHost *:443>
         SSLEngine on
         ServerName bitwarden.$hostname.$domainname
-        ServerAdmin webmaster@example.org
 
         SSLCertificateFile ${SSLCERTIFICATE}
         SSLCertificateKeyFile ${SSLKEY}
