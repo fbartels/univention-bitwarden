@@ -16,8 +16,18 @@ eval "$(ucr shell hostname domainname)"
 
 if [ ! -e ./env ]; then
 	cat <<-EOF >"./env"
+## please consult https://github.com/dani-garcia/bitwarden_rs#configuring-bitwarden-service
+## for possible configuration values and their impact
 DOMAIN=https://bitwarden.$hostname.$domainname
 SIGNUPS_ALLOWED=true
+#INVITATIONS_ALLOWED=false
+SMTP_HOST=$hostname.$domainname
+SMTP_PORT=465
+SMTP_SSL=true
+#SMTP_USERNAME=<username>
+#SMTP_PASSWORD=<password>
+#SHOW_PASSWORD_HINT=false
+#INVITATIONS_ALLOWED=false
 EOF
 fi
 
@@ -90,15 +100,14 @@ cat <<-EOF >"/etc/apache2/sites-available/bitwarden_rs.conf"
         SSLCACertificateFile ${SSLCA}
         ${SSLCHAIN}
 
-        ErrorLog \${APACHE_LOG_DIR}/bitwarden_rs-error.log
-        CustomLog \${APACHE_LOG_DIR}/bitwarden_rs-access.log combined
+        ErrorLog \${APACHE_LOG_DIR}/bitwarden-error.log
+        CustomLog \${APACHE_LOG_DIR}/bitwarden-access.log combined
 
         RewriteEngine On
         RewriteCond %{HTTP:Upgrade} =websocket [NC]
         RewriteRule /(.*)           ws://127.0.0.1:3012/$1 [P,L]
 
         ProxyPass / http://127.0.0.1:9080/
-        ProxyPassReverse / http://127.0.0.1:9080/
 
         ProxyPreserveHost On
         ProxyRequests Off
