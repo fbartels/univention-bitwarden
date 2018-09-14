@@ -9,7 +9,7 @@ APP="bitwarden-rs"
 # get latest tagged image
 VERSION=$(git ls-remote --refs --tags https://github.com/dani-garcia/bitwarden_rs.git | sort -t '/' -k 3 -V | awk -F/ '{ print $3 }' | tail -1)
 docker_name="mprasil/bitwarden:$VERSION"
-#docker_name="mprasil/bitwarden:beta-ws"
+#docker_name="mprasil/bitwarden:latest"
 data_dir="/var/lib/bitwarden_rs"
 
 eval "$(ucr shell hostname domainname)"
@@ -26,6 +26,7 @@ SMTP_PORT=465
 SMTP_SSL=true
 #SMTP_USERNAME=<username>
 #SMTP_PASSWORD=<password>
+#SMTP_FROM=bitwarden@$domainname
 #SHOW_PASSWORD_HINT=false
 #INVITATIONS_ALLOWED=false
 EOF
