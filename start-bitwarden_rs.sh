@@ -29,6 +29,8 @@ SMTP_SSL=true
 #SMTP_FROM=bitwarden@$domainname
 #SHOW_PASSWORD_HINT=false
 #INVITATIONS_ALLOWED=false
+## User for administrator (should be a dedicated user) - https://github.com/dani-garcia/bitwarden_rs#configure-server-administrator
+#SERVER_ADMIN_EMAIL=email@domain
 EOF
 fi
 
