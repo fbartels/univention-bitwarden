@@ -19,6 +19,7 @@ if [ ! -e ./env ]; then
 ## please consult https://github.com/dani-garcia/bitwarden_rs#configuring-bitwarden-service
 ## for possible configuration values and their impact
 DOMAIN=https://bitwarden.$hostname.$domainname
+WEBSOCKET_ENABLED=true
 SIGNUPS_ALLOWED=true
 #INVITATIONS_ALLOWED=false
 SMTP_HOST=$hostname.$domainname
