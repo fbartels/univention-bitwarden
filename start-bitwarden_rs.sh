@@ -38,7 +38,7 @@ fi
 mkdir -p $data_dir
 
 docker pull $docker_name
-docker rm -f $APP
+docker rm -f $APP || true
 docker run -d --name=$APP --restart=unless-stopped \
 	-v $data_dir:/data/ \
 	-v /etc/localtime:/etc/localtime:ro \
@@ -156,7 +156,7 @@ cat <<-EOF >"/etc/cron.daily/bitwarden_rs-backup"
 ###################################################################
 
 cd $data_dir
-sqlite3 db.sqlite3 ".backup db-backup.sq3"
+sqlite3 db.sqlite3 ".backup db-backup.sqlite3"
 
 EOF
 
