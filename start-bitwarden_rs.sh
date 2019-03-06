@@ -3,6 +3,12 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+err_report() {
+    echo "An error occurded on line $1 of this script."
+}
+
+trap 'err_report $LINENO' ERR
+
 # install git to make the version lookup succeed
 dpkg -s git 2>/dev/null >/dev/null || univention-install git
 
@@ -75,6 +81,8 @@ fi
 if [ ! -z $(ucr get apache2/ssl/certificatechain) ]; then
 	echo "using ucr defined chain"
 	SSLCHAIN="SSLCertificateChainFile $(ucr get apache2/ssl/certificatechain)"
+else
+	SSLCHAIN=""
 fi
 
 cat <<-EOF >"/etc/apache2/sites-available/bitwarden_rs.conf"
@@ -163,3 +171,5 @@ EOF
 
 chmod +x /etc/cron.daily/bitwarden_rs-backup
 
+echo
+echo "Setup succesful!"
