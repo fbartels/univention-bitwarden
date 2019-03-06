@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
+IFS=$'\n\t'
 
 # install git to make the version lookup succeed
 dpkg -s git 2>/dev/null >/dev/null || univention-install git
@@ -109,7 +110,7 @@ cat <<-EOF >"/etc/apache2/sites-available/bitwarden_rs.conf"
 
         RewriteEngine On
         RewriteCond %{HTTP:Upgrade} =websocket [NC]
-        RewriteRule /(.*)           ws://127.0.0.1:3012/$1 [P,L]
+        RewriteRule /(.*)           ws://127.0.0.1:3012/\$1 [P,L]
 
         ProxyPass / http://127.0.0.1:9080/
 
