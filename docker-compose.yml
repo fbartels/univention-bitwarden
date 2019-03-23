@@ -1,0 +1,14 @@
+version: '2'
+services:
+  bitwarden-rs:
+    build:
+      context: https://github.com/dani-garcia/bitwarden_rs.git
+    image: mprasil/bitwarden
+    restart: always
+    env_file: ./env
+    ports:
+      - "80:9080"
+      - "3012:3012"
+    volumes:
+      - /var/lib/bitwarden_rs:/data/
+      - /etc/localtime:/etc/localtime:ro
