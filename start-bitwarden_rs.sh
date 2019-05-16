@@ -15,8 +15,8 @@ dpkg -s git 2>/dev/null >/dev/null || univention-install git
 APP="bitwarden-rs"
 # get latest tagged image
 VERSION=$(git ls-remote --refs --tags https://github.com/dani-garcia/bitwarden_rs.git | sort -t '/' -k 3 -V | awk -F/ '{ print $3 }' | tail -1)
-docker_name="mprasil/bitwarden:$VERSION"
-#docker_name="mprasil/bitwarden:latest"
+docker_name="bitwardenrs/server:$VERSION"
+#docker_name="bitwardenrs/server:latest"
 data_dir="/var/lib/bitwarden_rs"
 
 eval "$(ucr shell hostname domainname)"
