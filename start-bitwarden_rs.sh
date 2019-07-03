@@ -23,7 +23,8 @@ eval "$(ucr shell hostname domainname)"
 
 if [ ! -e ./env ]; then
 	cat <<-EOF >"./env"
-## please consult https://github.com/dani-garcia/bitwarden_rs#configuring-bitwarden-service
+## please consult https://github.com/dani-garcia/bitwarden_rs/wiki and
+## https://github.com/dani-garcia/bitwarden_rs/blob/master/.env.template
 ## for possible configuration values and their impact
 DOMAIN=https://bitwarden."$hostname"."$domainname"
 WEBSOCKET_ENABLED=true

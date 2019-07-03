@@ -8,6 +8,10 @@ The upstream source of the app is a [Rust implementation of the Bitwarden API](h
 
 _*Note, that this project is not associated with the [Bitwarden](https://bitwarden.com/) project nor 8bit Solutions LLC._
 
+## Further configuration
+
+Most of bitwarden_rs can be configured through an `env` file. When running `start-bitwarden_rs.sh` for the first time this file will be created with some default values for you. Make sure to check https://github.com/dani-garcia/bitwarden_rs/wiki and https://github.com/dani-garcia/bitwarden_rs/blob/master/.env.template for further configuration instructions.
+
 ## Updating
 
 To update bitwarden_rs to the latest version simply rerun the script.
