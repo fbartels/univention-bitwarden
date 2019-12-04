@@ -37,7 +37,6 @@ SIGNUPS_ALLOWED=true
 #SMTP_PASSWORD=<password>
 #SMTP_FROM=bitwarden@$domainname
 #SHOW_PASSWORD_HINT=false
-#INVITATIONS_ALLOWED=false
 # admin page, see https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-admin-page
 ADMIN_TOKEN=$(openssl rand -base64 48)
 EOF
