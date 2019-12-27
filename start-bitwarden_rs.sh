@@ -173,3 +173,4 @@ chmod +x /etc/cron.daily/bitwarden_rs-backup
 
 echo
 echo "Setup succesful!"
+echo "Go to https://bitwarden.$hostname.$domainname to access Bitwarden on your system and create your user."
