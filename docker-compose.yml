@@ -3,7 +3,7 @@ services:
   bitwarden-rs:
     build:
       context: https://github.com/dani-garcia/bitwarden_rs.git#${currenttag:-master}
-    image: mprasil/bitwarden:${currenttag:-latest}
+    image: bitwardenrs/server:${currenttag:-latest}
     restart: always
     env_file: ./env
     ports:
