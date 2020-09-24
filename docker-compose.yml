@@ -1,9 +1,9 @@
-version: '2'
+version: '3.5'
 services:
   bitwarden-rs:
     build:
-      context: https://github.com/dani-garcia/bitwarden_rs.git
-    image: mprasil/bitwarden
+      context: https://github.com/dani-garcia/bitwarden_rs.git#${currenttag:-master}
+    image: mprasil/bitwarden:${currenttag:-latest}
     restart: always
     env_file: ./env
     ports:
