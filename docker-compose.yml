@@ -2,8 +2,8 @@ version: '3.5'
 services:
   bitwarden-rs:
     build:
-      context: https://github.com/dani-garcia/bitwarden_rs.git#${currenttag:-master}
-    image: bitwardenrs/server:${currenttag:-latest}
+      context: https://github.com/dani-garcia/vaultwarden.git#${currenttag:-master}
+    image: vaultwarden/server:${currenttag:-latest}
     restart: always
     env_file: ./env
     ports:
